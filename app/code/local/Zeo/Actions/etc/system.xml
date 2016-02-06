@@ -7,16 +7,16 @@
 		</zeo_config>
 	</tabs>
 	<sections>
-		<zeo_actions_setting  translate="label" module="actions">                    
+		<zeo_actions_setting translate="label" module="actions">
 			<label>Actions</label>
 			<tab>zeo_config</tab>
 			<frontend_type>text</frontend_type>
 			<sort_order>0</sort_order>
 			<show_in_default>1</show_in_default>
 			<show_in_website>1</show_in_website>
-			<show_in_store>1</show_in_store>            
+			<show_in_store>1</show_in_store>
 			<groups>
-				<cart_button translate="label"> 
+				<cart_button translate="label">
 					<label>Cart Button</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>20</sort_order>
@@ -32,9 +32,9 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							
+
 						</disable_add_to_cart_button>
-						
+
 						<hide_add_to_cart_button_groups>
 							<label>Disable Add to Cart in this Groups</label>
 							<frontend_type>multiselect</frontend_type>
@@ -44,32 +44,46 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>0</show_in_store>
-							<depends><disable_add_to_cart_button>1</disable_add_to_cart_button></depends>
+							<depends>
+								<disable_add_to_cart_button>1</disable_add_to_cart_button>
+							</depends>
 						</hide_add_to_cart_button_groups>
-						<check_allowed_customer_categories_add_to_cart translate="label">
+						<check_allowed_customer_categories_add_to_cart
+							translate="label">
 							<label>Check Allowed Product Categories for Customer</label>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
-							<comment>Check product category if it is in the allowed customer categories (when add to cart), You have to select restrict categories in customer account, </comment>
+							<comment>Check product category if it is in the allowed customer
+								categories (when add to cart), You have to select restrict
+								categories in customer account,
+							</comment>
 							<sort_order>20</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</check_allowed_customer_categories_add_to_cart>
-						
-						<check_allowed_customer_categories_add_to_cart_message translate="label">
-							<label>Check Allowed Product Categories for Customer Message</label>
+
+						<check_allowed_customer_categories_add_to_cart_message
+							translate="label">
+							<label>Check Allowed Product Categories for Customer Message
+							</label>
 							<frontend_type>textarea</frontend_type>
-							<comment>if [Check Product Category for Customer] is enabled, this text will display as error message, if it is empty, then default message will appear.</comment>
+							<comment>if [Check Product Category for Customer] is enabled,
+								this text will display as error message, if it is empty, then
+								default message will appear.
+							</comment>
 							<sort_order>21</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<depends><check_allowed_customer_categories_add_to_cart>1</check_allowed_customer_categories_add_to_cart></depends>
+							<depends>
+								<check_allowed_customer_categories_add_to_cart>1
+								</check_allowed_customer_categories_add_to_cart>
+							</depends>
 						</check_allowed_customer_categories_add_to_cart_message>
 					</fields>
 				</cart_button>
-				<customer_activation translate="label"> 
+				<customer_activation translate="label">
 					<label>Customer Activation</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>20</sort_order>
@@ -86,29 +100,42 @@
 							<show_in_website>0</show_in_website>
 							<show_in_store>0</show_in_store>
 						</check_customer_activation>
-						
-						<check_customer_activation_message translate="label">
+
+						<check_customer_activation_message
+							translate="label">
 							<label>Check Customer Activation Message</label>
 							<frontend_type>textarea</frontend_type>
-							<comment>if [Check Customer Activation] is enabled, this text will display as error message, if it is empty, then default message will appear.</comment>
+							<comment>if [Check Customer Activation] is enabled, this text
+								will display as error message, if it is empty, then default
+								message will appear.
+							</comment>
 							<sort_order>15</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<depends><check_customer_activation>1</check_customer_activation></depends>
+							<depends>
+								<check_customer_activation>1</check_customer_activation>
+							</depends>
 						</check_customer_activation_message>
-						
-						<check_customer_activation_create_message translate="label">
-							<label>Check Customer Activation Create New Account Message</label>
+
+						<check_customer_activation_create_message
+							translate="label">
+							<label>Check Customer Activation Create New Account Message
+							</label>
 							<frontend_type>textarea</frontend_type>
-							<comment>if [Check Customer Activation] is enabled, this text will display as error message, if it is empty, then default message will appear.</comment>
+							<comment>if [Check Customer Activation] is enabled, this text
+								will display as error message, if it is empty, then default
+								message will appear.
+							</comment>
 							<sort_order>20</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<depends><check_customer_activation>1</check_customer_activation></depends>
+							<depends>
+								<check_customer_activation>1</check_customer_activation>
+							</depends>
 						</check_customer_activation_create_message>
-						
+
 						<default_customer_value translate="label">
 							<label>Default value for new customer</label>
 							<frontend_type>select</frontend_type>
@@ -117,41 +144,49 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>0</show_in_website>
 							<show_in_store>0</show_in_store>
-							<depends><check_customer_activation>1</check_customer_activation></depends>
+							<depends>
+								<check_customer_activation>1</check_customer_activation>
+							</depends>
 						</default_customer_value>
-						
-						 <alert_admin translate="label">
-                            <label>Notify Admin on Customer Registration</label>
-                            <frontend_type>select</frontend_type>
+
+						<alert_admin translate="label">
+							<label>Notify Admin on Customer Registration</label>
+							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>25</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-							<depends><check_customer_activation>1</check_customer_activation></depends>
-                        </alert_admin>
-						<admin_email translate="label">
-							<label>Admin Email Address</label>
-							<fontend_type>text</fontend_type>
-							<sort_order>30</sort_order>
+							<sort_order>35</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>0</show_in_store>
-								<depends><alert_admin>1</alert_admin></depends>
+							<depends>
+								<check_customer_activation>1</check_customer_activation>
+							</depends>
+						</alert_admin>
+						<admin_email translate="label">
+							<label>Admin Email Address</label>
+							<fontend_type>text</fontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<depends>
+								<alert_admin>1</alert_admin>
+							</depends>
 						</admin_email>
 						<notify_customer translate="label">
 							<label>Notify Customer When Active or DeActive</label>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
-							<sort_order>40</sort_order>
+							<sort_order>45</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<depends><check_customer_activation>1</check_customer_activation></depends>
+							<depends>
+								<check_customer_activation>1</check_customer_activation>
+							</depends>
 						</notify_customer>
 					</fields>
 				</customer_activation>
-				<frontend translate="label"> 
+				<frontend translate="label">
 					<label>Frontend</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>20</sort_order>
@@ -159,7 +194,8 @@
 					<show_in_website>1</show_in_website>
 					<show_in_store>1</show_in_store>
 					<fields>
-						<disable_customer_account_create translate="label">
+						<disable_customer_account_create
+							translate="label">
 							<label>Disable Customer Account Create</label>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
@@ -168,24 +204,31 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</disable_customer_account_create>
-						
-						<disable_customer_account_create_message translate="label">
+
+						<disable_customer_account_create_message
+							translate="label">
 							<label>Disable Customer Account Create Message</label>
 							<frontend_type>textarea</frontend_type>
-							<comment>if [Disable Customer Account Create] is enabled, this text will display as error message, if it is empty, then default message will appear.</comment>
+							<comment>if [Disable Customer Account Create] is enabled, this
+								text will display as error message, if it is empty, then default
+								message will appear.
+							</comment>
 							<sort_order>11</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<depends><disable_customer_account_create>1</disable_customer_account_create></depends>
+							<depends>
+								<disable_customer_account_create>1
+								</disable_customer_account_create>
+							</depends>
 						</disable_customer_account_create_message>
-						
-						
-						
+
+
+
 					</fields>
 				</frontend>
-					   
-				<adminhtml translate="label"> 
+
+				<adminhtml translate="label">
 					<label>Adminhtml</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>30</sort_order>
