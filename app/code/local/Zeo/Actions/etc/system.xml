@@ -222,12 +222,8 @@
 								</disable_customer_account_create>
 							</depends>
 						</disable_customer_account_create_message>
-
-
-
 					</fields>
 				</frontend>
-
 				<adminhtml translate="label">
 					<label>Adminhtml</label>
 					<frontend_type>text</frontend_type>
