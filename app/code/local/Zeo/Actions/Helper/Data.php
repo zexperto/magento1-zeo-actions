@@ -93,14 +93,24 @@ class Zeo_Actions_Helper_Data extends Mage_Core_Helper_Abstract{
 			
 			$name = Mage::getStoreConfig ( 'trans_email/ident_support/name' );
 			$email = Mage::getStoreConfig ( 'trans_email/ident_support/email' );
-			$emailTemplate = Mage::getModel ( 'core/email_template' )->loadDefault ( 'action_notify_customer_activate_email_template' );
 
 			if($customer->getEmail()!=""){
+			    $store_id=$this->getCustomerStoreId($customer);
+			    $local = Mage::getStoreConfig('general/locale/code', $store_id);
+			    $emailTemplate = Mage::getModel ( 'core/email_template' )->loadDefault ( 'action_notify_customer_activate_email_template' ,$local);
+			     
+			    
 				$emailTemplate->setSenderName ( $name )->setSenderEmail ( $email );
-				$emailTemplate ->setTemplateSubject(Mage::helper('core') ->__("Your Account Has been activated"));
+				
+				$activate_subject="";
+				$activate_subject=Mage::getStoreConfig('zeo_actions_setting/customer_activation/email_activate_subject',$store_id);
+				if($activate_subject=="")
+				    $activate_subject=Mage::helper('core') ->__("Your Account Has been activated");
+				
+				$emailTemplate ->setTemplateSubject($activate_subject);
+				
 				$emailTemplateVariables = array ();
 				$emailTemplateVariables ['customer'] = $customer;
-				$store_id=$this->getCustomerStoreId($customer);
 				$emailTemplateVariables ['store'] = Mage::getModel('core/store')->load($store_id);;
 				$processedTemplate = $emailTemplate->getProcessedTemplate ( $emailTemplateVariables );
 				$result = $emailTemplate->send ( $customer->getEmail(), $customer->getEmail(), $emailTemplateVariables );
@@ -112,14 +122,23 @@ class Zeo_Actions_Helper_Data extends Mage_Core_Helper_Abstract{
 		if(Mage::helper('actions')->notify_customer()){
 			$name = Mage::getStoreConfig ( 'trans_email/ident_support/name' );
 			$email = Mage::getStoreConfig ( 'trans_email/ident_support/email' );
-			$emailTemplate = Mage::getModel ( 'core/email_template' )->loadDefault ( 'action_notify_customer_deactivate_email_template' );
 		
 			if($customer->getEmail()!=""){
+			    $store_id=$this->getCustomerStoreId($customer);
+			    $local = Mage::getStoreConfig('general/locale/code', $store_id);
+			    $emailTemplate = Mage::getModel ( 'core/email_template' )->loadDefault ( 'action_notify_customer_deactivate_email_template' ,$local);
+			     
 				$emailTemplate->setSenderName ( $name )->setSenderEmail ( $email );
-				$emailTemplate ->setTemplateSubject(Mage::helper('core') ->__("Your Account Has been deactivated"));
+				
+				$deactivate_subject="";
+				$deactivate_subject=Mage::getStoreConfig('zeo_actions_setting/customer_activation/email_deactivate_subject',$store_id);
+				if($deactivate_subject=="")
+				    $deactivate_subject=Mage::helper('core') ->__("Your Account Has been deactivated");
+				
+				$emailTemplate ->setTemplateSubject($deactivate_subject);
 				$emailTemplateVariables = array ();
 				$emailTemplateVariables ['customer'] = $customer;
-				$store_id=$this->getCustomerStoreId($customer);
+				
 				$emailTemplateVariables ['store'] = Mage::getModel('core/store')->load($store_id);;
 				$processedTemplate = $emailTemplate->getProcessedTemplate ( $emailTemplateVariables );
 				$result = $emailTemplate->send ( $customer->getEmail(), $customer->getEmail(), $emailTemplateVariables );

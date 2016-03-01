@@ -184,6 +184,24 @@
 								<check_customer_activation>1</check_customer_activation>
 							</depends>
 						</notify_customer>
+						<email_activate_subject>
+						<label>Email Activate Subject</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><notify_customer>1</notify_customer></depends>
+						</email_activate_subject>
+						<email_deactivate_subject>
+						<label>Email Deactivate Subject</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><notify_customer>1</notify_customer></depends>
+						</email_deactivate_subject>
 					</fields>
 				</customer_activation>
 				<frontend translate="label">
