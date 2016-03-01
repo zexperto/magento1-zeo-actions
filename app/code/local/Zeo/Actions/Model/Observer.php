@@ -61,12 +61,16 @@ class Zeo_Actions_Model_Observer{
 		$oCustomer=$observer->getCustomer();
 		$origin_data=$oCustomer->getOrigData("zeo_customer_activated");
 		$new_data=$oCustomer->getData("zeo_customer_activated");
-		
-		if($origin_data!=$new_data){
-			if($new_data=="1")
-				Mage::helper('actions')->sendCustomerActivationEmail($oCustomer);
-			if($new_data=="0")
-				Mage::helper('actions')->sendCustomerDeActivationEmail($oCustomer);
+		if($origin_data == "" && $new_data==="0"){
+		 // do nothing   
+		}
+		else{
+    		if($origin_data!=$new_data){
+    			if($new_data=="1")
+    				Mage::helper('actions')->sendCustomerActivationEmail($oCustomer);
+    			if($new_data=="0")
+    				Mage::helper('actions')->sendCustomerDeActivationEmail($oCustomer);
+    		}
 		}
 	}
 	
