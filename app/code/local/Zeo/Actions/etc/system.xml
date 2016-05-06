@@ -31,7 +31,7 @@
 							<sort_order>0</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
-							<show_in_store>1</show_in_store>
+							<show_in_store>0</show_in_store>
 
 						</disable_add_to_cart_button>
 
@@ -42,7 +42,7 @@
 							<source_model>actions/source_customergroup</source_model>
 							<sort_order>3</sort_order>
 							<show_in_default>1</show_in_default>
-							<show_in_website>0</show_in_website>
+							<show_in_website>1</show_in_website>
 							<show_in_store>0</show_in_store>
 							<depends>
 								<disable_add_to_cart_button>1</disable_add_to_cart_button>
@@ -60,7 +60,7 @@
 							<sort_order>20</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
-							<show_in_store>1</show_in_store>
+							<show_in_store>0</show_in_store>
 						</check_allowed_customer_categories_add_to_cart>
 
 						<check_allowed_customer_categories_add_to_cart_message
@@ -142,7 +142,7 @@
 							<source_model>adminhtml/system_config_source_yesno</source_model>
 							<sort_order>30</sort_order>
 							<show_in_default>1</show_in_default>
-							<show_in_website>0</show_in_website>
+							<show_in_website>1</show_in_website>
 							<show_in_store>0</show_in_store>
 							<depends>
 								<check_customer_activation>1</check_customer_activation>
@@ -220,7 +220,7 @@
 							<sort_order>10</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
-							<show_in_store>1</show_in_store>
+							<show_in_store>0</show_in_store>
 						</disable_customer_account_create>
 
 						<disable_customer_account_create_message
@@ -242,6 +242,56 @@
 						</disable_customer_account_create_message>
 					</fields>
 				</frontend>
+				<product_price translate="label">
+					<label>Hide Product Price</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<hide_product_price	translate="label">
+							<label>Hide Product Price</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</hide_product_price>
+						<customer_groups translate="label">
+							<label>Hide price For selected custmomer groups</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>actions/source_customergroup</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<depends> <hide_product_price>1</hide_product_price></depends>
+						</customer_groups>
+						<catalog_categories translate="label">
+							<label>Hide price For selected Categroies</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>actions/eav_entity_attribute_source_categories</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<depends> <hide_product_price>1</hide_product_price></depends>
+						</catalog_categories>
+						<hide_product_price_message translate="label">
+							<label>Message instead of price</label>
+							<frontend_type>textarea</frontend_type>
+							<comment>Put here the text you want to display instead of price</comment>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><hide_product_price>1</hide_product_price></depends>
+						</hide_product_price_message>
+					</fields>
+					
+				</product_price>
 				<adminhtml translate="label">
 					<label>Adminhtml</label>
 					<frontend_type>text</frontend_type>
@@ -256,8 +306,8 @@
 							<source_model>adminhtml/system_config_source_yesno</source_model>
 							<sort_order>0</sort_order>
 							<show_in_default>1</show_in_default>
-							<show_in_website>1</show_in_website>
-							<show_in_store>1</show_in_store>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
 						</delete_order>
 					</fields>
 				</adminhtml>

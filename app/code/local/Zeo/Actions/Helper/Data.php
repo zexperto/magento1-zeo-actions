@@ -36,6 +36,44 @@ class Zeo_Actions_Helper_Data extends Mage_Core_Helper_Abstract{
 		else
 		return false;
 	}
+	static public function HideProductPrice(){
+	    if(Mage::helper('actions')->IsActive())
+	        return Mage::getStoreConfig('zeo_actions_setting/product_price/hide_product_price')=="1"? true: false;
+	    else
+	        return false;
+	}
+	static public function inRestrictProducts(Mage_Catalog_Model_Product $oProduct){
+	    
+	    $product_disabled=false;
+	    
+	    $restrict_groups=Mage::getStoreConfig('zeo_actions_setting/product_price/customer_groups');
+	    $restrict_groups=trim($restrict_groups);
+	    $restrict_groups=trim($restrict_groups,",");
+	   
+	    if($restrict_groups!=""){
+	        $restrict_groups_array=explode(",",$restrict_groups);
+	        $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+	        	
+	        if(in_array($groupId,$restrict_groups_array))
+	            return  true;
+	    }
+	    
+	    
+	    $restrict_categories=Mage::getStoreConfig('zeo_actions_setting/product_price/catalog_categories');
+	    $restrict_categories=trim($restrict_categories);
+	    $restrict_categories=trim($restrict_categories,",");
+	   
+	    if($restrict_categories!=""){
+	       $restrict_categories_array=explode(",",$restrict_categories);
+	       $product_categpries=$oProduct->getCategoryIds();
+	       $final_cats=array_intersect($restrict_categories_array,$product_categpries);	  
+	       if(count($final_cats)>0)
+	           return true;
+	    }
+	    
+	    
+	    return $product_disabled;
+	}
 	static public function CheckCustomerActivation(){
 		if(Mage::helper('actions')->IsActive())
 		return Mage::getStoreConfig('zeo_actions_setting/customer_activation/check_customer_activation')=="1"? true: false;

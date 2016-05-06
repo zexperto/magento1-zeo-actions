@@ -56,7 +56,15 @@
 					</actions_catalog_product_collection_load_after>
 				</observers>
 			</catalog_product_collection_load_after>
-			
+			<core_block_abstract_to_html_after>
+                <observers>
+                    <action_core_block_abstract_to_html_after>
+                        <type>model</type>
+                        <class>Zeo_Actions_Model_Observer</class>
+                        <method>coreBlockAbstractToHtmlAfter</method>
+                    </action_core_block_abstract_to_html_after>
+                </observers>
+            </core_block_abstract_to_html_after>
 		</events>
 	</frontend>
 	<global>

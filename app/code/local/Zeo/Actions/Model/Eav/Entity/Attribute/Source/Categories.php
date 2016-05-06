@@ -52,6 +52,36 @@ class Zeo_Actions_Model_Eav_Entity_Attribute_Source_Categories extends Mage_Eav_
                 }
       
      }
+     public function toOptionArray()
+     {
+         // Get category collection
+         $categories = Mage::getModel('catalog/category')
+         ->getCollection()
+         ->addAttributeToSelect('name')
+         ->addAttributeToSort('path', 'asc')
+         ->addFieldToFilter('is_active', array('eq'=>'1'))
+         ->load()
+         ->toArray();
+         
+         // Arrange categories in required array
+         $categoryList = array("");
+         foreach ($categories as $catId => $category) {
+             $dash="";
+             for($i=2;$i<=$category['level'];$i++){
+                 $dash .="--";
+             }
+             
+             if (isset($category['name'])) {
+                 $categoryList[] = array(
+                     'label' => $dash.$category['name'],
+                    // 'level'  =>$category['level'],
+                     'value' => $catId
+                 );
+             }
+         }
+         return $categoryList;
+         
+     }
     public function getAllOptions()
     {
         if (is_null($this->_options)) {

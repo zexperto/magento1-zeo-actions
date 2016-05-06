@@ -1,6 +1,19 @@
 <?php
 class Zeo_Actions_Model_Observer{
-	
+    /**
+     * The last product Id
+     *
+     * @var int
+     */
+    protected static $iLastProductId = 0;
+   
+    
+    protected  static $hide_product_price_message="";
+    
+    public function __construct(){
+        self::$hide_product_price_message = Mage::getStoreConfig('zeo_actions_setting/product_price/hide_product_price_message');
+    }
+    
 	public function afterCollectionLoad(Varien_Event_Observer $observer){
 		$collection = $observer->getCollection();
 		if(!isset($collection)){
@@ -164,4 +177,41 @@ class Zeo_Actions_Model_Observer{
 			}
 		}
 	}
+	
+	public function coreBlockAbstractToHtmlAfter(Varien_Event_Observer $oObserver)
+	{
+	    if(Mage::helper('actions')->HideProductPrice()){
+    	    $oBlock     = $oObserver->getData('block');
+    	    $oTransport = $oObserver->getData('transport');
+	        /*
+	         * Check to see if we should remove the product price
+	         */
+    	    
+	        if (get_class($oBlock) =="Mage_Catalog_Block_Product_Price") {
+	           $this->transformPriceBlock($oBlock, $oTransport);
+	        }
+	        
+	        return ;
+	    }
+	}
+	protected function transformPriceBlock($oBlock, $oTransport)
+	{
+
+	    $oProduct          = $oBlock->getProduct();
+	    $iCurrentProductId = $oProduct->getId();
+	
+	    if (Mage::helper('actions')->inRestrictProducts($oProduct) === true) {
+	        // To stop duplicate information being displayed validate that we only do this once per product
+	        if ($iCurrentProductId !== self::$iLastProductId) {
+	            self::$iLastProductId = $iCurrentProductId;
+	            $oTransport->setHtml(self::$hide_product_price_message);
+	            $oProduct->setIsSalable(false);
+	        } else {
+	            $oTransport->setHtml('');
+	        }
+	      //  $this->setSymmetricsProductType($oProduct);
+	    }
+	}
+	
+	
 }
