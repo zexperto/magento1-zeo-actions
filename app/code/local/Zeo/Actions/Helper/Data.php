@@ -143,7 +143,7 @@ class Zeo_Actions_Helper_Data extends Mage_Core_Helper_Abstract{
 				$activate_subject="";
 				$activate_subject=Mage::getStoreConfig('zeo_actions_setting/customer_activation/email_activate_subject',$store_id);
 				if($activate_subject=="")
-				    $activate_subject=Mage::helper('core') ->__("Your Account Has been activated");
+				    $activate_subject=Mage::helper('core') ->__("Your account has been activated");
 				
 				$emailTemplate ->setTemplateSubject($activate_subject);
 				
@@ -171,7 +171,7 @@ class Zeo_Actions_Helper_Data extends Mage_Core_Helper_Abstract{
 				$deactivate_subject="";
 				$deactivate_subject=Mage::getStoreConfig('zeo_actions_setting/customer_activation/email_deactivate_subject',$store_id);
 				if($deactivate_subject=="")
-				    $deactivate_subject=Mage::helper('core') ->__("Your Account Has been deactivated");
+				    $deactivate_subject=Mage::helper('core') ->__("Your account has been deactivated");
 				
 				$emailTemplate ->setTemplateSubject($deactivate_subject);
 				$emailTemplateVariables = array ();
