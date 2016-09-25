@@ -187,7 +187,9 @@ class Zeo_Actions_Model_Observer{
 	         * Check to see if we should remove the product price
 	         */
     	    
-	        if (get_class($oBlock) =="Mage_Catalog_Block_Product_Price") {
+	        if (get_class($oBlock) == "Mage_Catalog_Block_Product_Price" ||
+	            get_class($oBlock) == "Mage_Catalog_Block_Product_View_Type_Simple"
+	                ) {
 	           $this->transformPriceBlock($oBlock, $oTransport);
 	        }
 	        
